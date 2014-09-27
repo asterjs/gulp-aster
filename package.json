@@ -1,6 +1,6 @@
 {
   "name": "gulp-aster",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "aster binding for gulp",
   "keywords": [
     "gulpplugin",
