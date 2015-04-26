@@ -1,5 +1,5 @@
 var gutil = require('gulp-util'),
-	parse = require('aster-parse')(),
+	parse = require('aster-parse'),
 	sourceMapToAst = require('sourcemap-to-ast'),
 	generate = require('escodegen').generate,
 	Rx = require('rx'),
@@ -29,7 +29,7 @@ module.exports = function (asterTransform) {
 			}
 		});
 
-		files = parse(files).zip(observable.pluck('sourceMap'), function (file, sourceMap) {
+    files = parse()(files).zip(observable.pluck('sourceMap'), function (file, sourceMap) {
 			if (sourceMap) {
 				sourceMapToAst(file.program, sourceMap);
 			}
@@ -58,3 +58,5 @@ module.exports = function (asterTransform) {
 		return files;
 	});
 };
+
+module.exports.registerParser = parse.registerParser;
